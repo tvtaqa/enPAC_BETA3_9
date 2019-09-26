@@ -1,0 +1,45 @@
+Total transitions:11
+
+id:r_starts
+producer:(1,r_stopped) (1,initialize) 
+consumer:(1,r_active) (1,initialized) 
+
+id:r_begin_move
+producer:(1,move) (1,r_active) 
+consumer:(1,r_moving) 
+
+id:r_end_move
+producer:(1,r_moving) 
+consumer:(1,moved) (1,r_active) 
+
+id:r_stops
+producer:(1,r_active) (1,off) 
+consumer:(1,r_stopped) 
+
+id:p_intoSC
+producer:(1,p_rdy) (1,access) 
+consumer:(1,p_sc) 
+
+id:p_move
+producer:(1,p_sc) 
+consumer:(1,p_m) (1,move) 
+
+id:p_moved
+producer:(1,p_m) (1,moved) 
+consumer:(1,p_rel) 
+
+id:p_sop
+producer:(1,p_rdy) 
+consumer:(1,off) (1,p_i1) 
+
+id:p_relSC
+producer:(1,p_rel) 
+consumer:(1,access) (1,p_rdy) 
+
+id:p_start
+producer:(1,p_i1) 
+consumer:(1,initialize) (1,p_i2) 
+
+id:p_started
+producer:(1,p_i2) (1,initialized) 
+consumer:(1,p_rdy) 

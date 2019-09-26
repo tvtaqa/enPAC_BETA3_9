@@ -21,8 +21,8 @@
 #define TIME_LEFT 112
 #define max_to_string 30
 #define max_array_num 10000
-#define BOUND_INCREASE 10000
-#define CUTOFF  500000
+#define BOUND_INCREASE 50000
+#define CUTOFF  2000000
 #define hash_table_num 100000
 #define each_ltl_time 60
 using namespace std;
@@ -311,6 +311,7 @@ void Product_Automata<rgnode,rg_T>::ModelChecker(string propertyid, int &timelef
     //核心部分
     result = true;
     getProduct();     //合成交自动机并进行搜索
+    cout<<"maxdepth:"<<maxdepth<<"\t"<<"bound:"<<bound<<endl;
 
     //打印结果
     string re;
@@ -388,6 +389,7 @@ void Product_Automata<rgnode,rg_T>::getProduct() {
         h.resetHash();
         dfs_stack.resetHash();
     }
+
     if(bound>CUTOFF)cout<<"out of the bound"<<endl;
 
 }

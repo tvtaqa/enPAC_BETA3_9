@@ -6,10 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/c/Documents/enPAC_BETA3.9/Data_Structures.cpp
-Data_Structures.h
-/home/c/Documents/enPAC_BETA3.9/Data_Structures.h
-
 /home/c/Documents/enPAC_BETA3.9/Data_Structures.h
 iostream
 -
@@ -26,10 +22,6 @@ Lexer.h
 gperftools/tcmalloc.h
 -
 
-/home/c/Documents/enPAC_BETA3.9/Lexer.cpp
-Lexer.h
-/home/c/Documents/enPAC_BETA3.9/Lexer.h
-
 /home/c/Documents/enPAC_BETA3.9/Lexer.h
 iostream
 -
@@ -37,12 +29,6 @@ string
 -
 gperftools/tcmalloc.h
 -
-
-/home/c/Documents/enPAC_BETA3.9/Petri_Net.cpp
-iostream
--
-Petri_Net.h
-/home/c/Documents/enPAC_BETA3.9/Petri_Net.h
 
 /home/c/Documents/enPAC_BETA3.9/Petri_Net.h
 string
@@ -62,10 +48,6 @@ cmath
 gperftools/tcmalloc.h
 -
 
-/home/c/Documents/enPAC_BETA3.9/RG.cpp
-RG.h
-/home/c/Documents/enPAC_BETA3.9/RG.h
-
 /home/c/Documents/enPAC_BETA3.9/RG.h
 Petri_Net.h
 /home/c/Documents/enPAC_BETA3.9/Petri_Net.h
@@ -76,27 +58,13 @@ malloc.h
 gperftools/malloc_extension.h
 -
 
-/home/c/Documents/enPAC_BETA3.9/SBA.cpp
-SBA.h
-/home/c/Documents/enPAC_BETA3.9/SBA.h
-
 /home/c/Documents/enPAC_BETA3.9/SBA.h
 TBA.h
 /home/c/Documents/enPAC_BETA3.9/TBA.h
-
-/home/c/Documents/enPAC_BETA3.9/Syntax_Tree.cpp
-Syntax_Tree.h
-/home/c/Documents/enPAC_BETA3.9/Syntax_Tree.h
-iomanip
--
 
 /home/c/Documents/enPAC_BETA3.9/Syntax_Tree.h
 Data_Structures.h
 /home/c/Documents/enPAC_BETA3.9/Data_Structures.h
-
-/home/c/Documents/enPAC_BETA3.9/TBA.cpp
-TBA.h
-/home/c/Documents/enPAC_BETA3.9/TBA.h
 
 /home/c/Documents/enPAC_BETA3.9/TBA.h
 TGBA.h
@@ -107,10 +75,6 @@ iomanip
 -
 cstring
 -
-
-/home/c/Documents/enPAC_BETA3.9/TGBA.cpp
-TGBA.h
-/home/c/Documents/enPAC_BETA3.9/TGBA.h
 
 /home/c/Documents/enPAC_BETA3.9/TGBA.h
 Syntax_Tree.h
@@ -164,25 +128,11 @@ RG.h
 SBA.h
 /home/c/Documents/enPAC_BETA3.9/SBA.h
 
-/home/c/Documents/enPAC_BETA3.9/tinystr.cpp
-tinystr.h
-/home/c/Documents/enPAC_BETA3.9/tinystr.h
-
 /home/c/Documents/enPAC_BETA3.9/tinystr.h
 assert.h
 -
 string.h
 -
-
-/home/c/Documents/enPAC_BETA3.9/tinyxml.cpp
-ctype.h
--
-sstream
--
-iostream
--
-tinyxml.h
-/home/c/Documents/enPAC_BETA3.9/tinyxml.h
 
 /home/c/Documents/enPAC_BETA3.9/tinyxml.h
 ctype.h
@@ -203,26 +153,6 @@ sstream
 -
 tinystr.h
 /home/c/Documents/enPAC_BETA3.9/tinystr.h
-
-/home/c/Documents/enPAC_BETA3.9/tinyxmlerror.cpp
-tinyxml.h
-/home/c/Documents/enPAC_BETA3.9/tinyxml.h
-
-/home/c/Documents/enPAC_BETA3.9/tinyxmlparser.cpp
-ctype.h
--
-stddef.h
--
-tinyxml.h
-/home/c/Documents/enPAC_BETA3.9/tinyxml.h
-windows.h
--
-
-/home/c/Documents/enPAC_BETA3.9/xml2ltl.cpp
-xml2ltl.h
-/home/c/Documents/enPAC_BETA3.9/xml2ltl.h
-iostream
--
 
 /home/c/Documents/enPAC_BETA3.9/xml2ltl.h
 tinyxml.h

@@ -1,0 +1,16 @@
+RobotManipulation-PT-10000-LTLCardinality-00:[](X(<>({3<=token-count(p_i1,)})))
+RobotManipulation-PT-10000-LTLCardinality-01:(<>(X({1<=token-count(move,)})))U([]({token-count(p_sc,)<=token-count(r_moving,)}))
+RobotManipulation-PT-10000-LTLCardinality-02:X(X({token-count(off,)<=token-count(p_m,)}))
+RobotManipulation-PT-10000-LTLCardinality-03:<>([](X({2<=token-count(r_stopped,)})))
+RobotManipulation-PT-10000-LTLCardinality-04:<>(<>({1<=token-count(p_m,)}))
+RobotManipulation-PT-10000-LTLCardinality-05:{token-count(moved,)<=token-count(p_i2,)}
+RobotManipulation-PT-10000-LTLCardinality-06:X(X([](<>({token-count(r_stopped,)<=token-count(p_m,)}))))
+RobotManipulation-PT-10000-LTLCardinality-07:[](<>(X(X({2<=token-count(p_i1,)}))))
+RobotManipulation-PT-10000-LTLCardinality-08:{1<=token-count(initialized,)}
+RobotManipulation-PT-10000-LTLCardinality-09:X(<>(<>([]({token-count(access,)<=token-count(initialized,)}))))
+RobotManipulation-PT-10000-LTLCardinality-10:(({token-count(access,)<=token-count(r_moving,)})U({1<=token-count(p_rel,)}))U({3<=token-count(r_moving,)})
+RobotManipulation-PT-10000-LTLCardinality-11:{token-count(p_i1,)<=token-count(move,)}
+RobotManipulation-PT-10000-LTLCardinality-12:[]((<>({2<=token-count(initialize,)}))U([]({1<=token-count(off,)})))
+RobotManipulation-PT-10000-LTLCardinality-13:X(X(X({token-count(r_moving,)<=token-count(r_stopped,)})))
+RobotManipulation-PT-10000-LTLCardinality-14:<>({token-count(r_stopped,)<=token-count(initialized,)})
+RobotManipulation-PT-10000-LTLCardinality-15:<>((X({2<=token-count(p_rel,)}))U(<>({token-count(r_active,)<=token-count(r_moving,)})))
