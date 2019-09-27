@@ -1,45 +1,89 @@
-Total transitions:11
+Total transitions:22
 
-id:r_starts
-producer:(1,r_stopped) (1,initialize) 
-consumer:(1,r_active) (1,initialized) 
+id:GAP_dehydrogenase
+producer:(1,GAP) (1,NADplus) (1,Pi) (1,c2) 
+consumer:(1,_1_3_BPG) (1,NADH) (1,c1) 
 
-id:r_begin_move
-producer:(1,move) (1,r_active) 
-consumer:(1,r_moving) 
+id:TIM_forward
+producer:(1,DHAP) 
+consumer:(1,GAP) 
 
-id:r_end_move
-producer:(1,r_moving) 
-consumer:(1,moved) (1,r_active) 
+id:TIM_backward
+producer:(1,GAP) 
+consumer:(1,DHAP) 
 
-id:r_stops
-producer:(1,r_active) (1,off) 
-consumer:(1,r_stopped) 
+id:Aldolase
+producer:(1,FBP) 
+consumer:(1,GAP) (1,DHAP) 
 
-id:p_intoSC
-producer:(1,p_rdy) (1,access) 
-consumer:(1,p_sc) 
+id:Phosphofructokinase
+producer:(1,F6P) (1,ATP) 
+consumer:(1,FBP) (1,ADP) 
 
-id:p_move
-producer:(1,p_sc) 
-consumer:(1,p_m) (1,move) 
+id:Phosphoclucose_isomerase
+producer:(1,G6P) (3000,b1) 
+consumer:(1,F6P) (3000,b2) 
 
-id:p_moved
-producer:(1,p_m) (1,moved) 
-consumer:(1,p_rel) 
+id:Hexokinase
+producer:(1,ATP) (1,Gluc) 
+consumer:(1,G6P) (1,ADP) 
 
-id:p_sop
-producer:(1,p_rdy) 
-consumer:(1,off) (1,p_i1) 
+id:Glutathione_reductose
+producer:(1,GSSG) (1,NADPH) 
+consumer:(2,GSH) (1,NADPplus) 
 
-id:p_relSC
-producer:(1,p_rel) 
-consumer:(1,access) (1,p_rdy) 
+id:Glutathione_oxidation
+producer:(2,GSH) 
+consumer:(1,GSSG) 
 
-id:p_start
-producer:(1,p_i1) 
-consumer:(1,initialize) (1,p_i2) 
+id:G6P_dehydrogenase
+producer:(2,NADPplus) (1,G6P) (1,b2) 
+consumer:(2,NADPH) (1,Ru5P) (1,b1) 
 
-id:p_started
-producer:(1,p_i2) (1,initialized) 
-consumer:(1,p_rdy) 
+id:Ru5P_epimerase
+producer:(1,Ru5P) (1,a2) 
+consumer:(1,Xu5P) (1,a1) 
+
+id:Ru5P_isomerase
+producer:(1,Ru5P) (2000,a1) 
+consumer:(1,R5P) (2000,a2) 
+
+id:Transaldolase
+producer:(1,S7P) (1,GAP) (7000,c1) 
+consumer:(1,E4P) (1,F6P) (7000,c2) 
+
+id:Transketolase2
+producer:(1,E4P) (1,Xu5P) 
+consumer:(1,F6P) (1,GAP) 
+
+id:Phosphoglycerate_kinase
+producer:(1,ADP) (1,_1_3_BPG) 
+consumer:(1,_3PG) (1,ATP) 
+
+id:Phosphoglycerate_mutase
+producer:(1,_3PG) 
+consumer:(1,_2PG) 
+
+id:Enolase
+producer:(1,_2PG) 
+consumer:(1,PEP) 
+
+id:Pyruvate_kinase
+producer:(1,PEP) (1,ADP) 
+consumer:(1,Pyr) (1,ATP) 
+
+id:Lactate_dehydrogenase
+producer:(1,Pyr) (1,NADH) 
+consumer:(1,Lac) (1,NADplus) 
+
+id:remove
+producer:(7000,ATP) (7000,Lac) 
+consumer:(1,start) 
+
+id:generate
+producer:(1,start) 
+consumer:(7000,ADP) (4000,Gluc) (7000,Pi) 
+
+id:Transketolase1
+producer:(1,Xu5P) (1,R5P) 
+consumer:(1,S7P) (1,GAP) 

@@ -21,7 +21,7 @@
 #define TIME_LEFT 112
 #define max_to_string 30
 #define max_array_num 10000
-#define BOUND_INCREASE 50000
+#define BOUND_INCREASE 5
 #define CUTOFF  2000000
 #define hash_table_num 100000
 #define each_ltl_time 60
@@ -95,12 +95,15 @@ private:
     ofstream outcurdepth;
     int bound;
     int maxdepth;
+    int flag;
 
 public:
     Product_Automata(Petri *pt, rg_T* r, SBA *sba);
-    void getProduct();         //合成交自动机
+    void getProduct_Bound();                    //限界策略
+    void getProduct();                          //非限界策略
     void addinitial_status(rgnode *initnode);  //生成交自动机的初始状态
     void ModelChecker(string propertyid, int &timeleft);  //最外层的函数
+    void simplified_dfs_bound(Product<rgnode> *q, int recurdepth, int CBANid);          //限界搜索
     void simplified_dfs(Product<rgnode> *q, int recurdepth, int CBANid);          //CBANid: current biggest accepted node id
     bool isLabel(rgnode *state, int sj);  //判断能否合成交状态
     bool judgeF(string s);         //判断该公式是否为F类型的公式
@@ -277,7 +280,9 @@ Product_Automata<rgnode,rg_T>::Product_Automata(Petri *pt, rg_T* r, SBA *sba) {
     rg = r;
     ba = sba;
     result = true;
-
+    bound=0;
+    maxdepth=0;
+    flag = 100;
     outcurdepth.open("curdepth.txt",ios::out);
 }
 
@@ -310,7 +315,8 @@ void Product_Automata<rgnode,rg_T>::ModelChecker(string propertyid, int &timelef
 
     //核心部分
     result = true;
-    getProduct();     //合成交自动机并进行搜索
+    getProduct_Bound();     //合成交自动机并进行搜索
+    if(bound)
     cout<<"maxdepth:"<<maxdepth<<"\t"<<"bound:"<<bound<<endl;
 
     //打印结果
@@ -347,7 +353,7 @@ void Product_Automata<rgnode,rg_T>::ModelChecker(string propertyid, int &timelef
  * function: 合成交自动机并进行搜索
  * */
 template <class rgnode, class rg_T>
-void Product_Automata<rgnode,rg_T>::getProduct() {
+void Product_Automata<rgnode,rg_T>::getProduct_Bound() {
     //如果还未得到rg的初始状态，那么就生成他的初始状态
     if(rg->initnode == NULL){
         rg->RGinitialnode();
@@ -373,7 +379,7 @@ void Product_Automata<rgnode,rg_T>::getProduct() {
             init->BAname_id = initial_status[i].BAname_id;
             init->hashnext = NULL;
 //        dfs1(init);
-            simplified_dfs(init,0,-1);
+            simplified_dfs_bound(init,0,-1);
             delete init;
             if(!result || !timeflag)  //如果已经出结果或超时，则退出
                 break;
@@ -395,7 +401,7 @@ void Product_Automata<rgnode,rg_T>::getProduct() {
 }
 
 template <class rgnode, class rg_T>
-void Product_Automata<rgnode,rg_T>::simplified_dfs(Product<rgnode> *q, int recurdepth, int CBANid) {
+void Product_Automata<rgnode,rg_T>::simplified_dfs_bound(Product<rgnode> *q, int recurdepth, int CBANid) {
 
     outcurdepth<<recurdepth<<endl;
     if(maxdepth < recurdepth)
@@ -452,7 +458,7 @@ void Product_Automata<rgnode,rg_T>::simplified_dfs(Product<rgnode> *q, int recur
                 }
                 if(h.search(qs) == NULL)
                 {
-                    simplified_dfs(qs,recurdepth+1,cban);
+                    simplified_dfs_bound(qs,recurdepth+1,cban);
                 }
                 delete qs;
             }
@@ -460,6 +466,145 @@ void Product_Automata<rgnode,rg_T>::simplified_dfs(Product<rgnode> *q, int recur
         for(rg_i; rg_i<firecount; rg_i++)
         {
             if(!result || !timeflag || recurdepth>bound){
+                return ;
+            }
+
+            bool exist;
+            rgnode *rgseed = rg->RGcreatenode(q->RGname_ptr,isFirable[rg_i],exist);
+            if(isLabel(rgseed, pba->adjvex))
+            {
+                Product<rgnode> *qs = new Product<rgnode>;
+                qs->id = recurdepth + 1;
+                qs->BAname_id = pba->adjvex;
+                qs->RGname_ptr = rgseed;
+
+//                if(rgseed->fireptr == 0 && ba->svertics[qs->BAname_id].isAccept == true)
+//                {
+//                    cout<<"no successors!"<<endl;
+//                    result = false;
+//                    return;
+//                }
+
+                Product<rgnode> *existpos = dfs_stack.search(qs);
+                if(existpos != NULL)
+                {
+                    if(existpos->id <= cban)
+                    {
+                        result = false;
+                        delete qs;
+                        return;
+                    }
+                }
+                if(h.search(qs) == NULL)
+                {
+                    simplified_dfs_bound(qs,recurdepth+1,cban);
+                }
+                delete qs;
+            }
+        }
+        if(firecount>0)
+            delete [] isFirable;
+        pba = pba->nextarc;
+    }
+    dfs_stack.pop(q);
+    MallocExtension::instance()->ReleaseFreeMemory();
+}
+
+
+template <class rgnode, class rg_T>
+void Product_Automata<rgnode,rg_T>::getProduct() {
+    //如果还未得到rg的初始状态，那么就生成他的初始状态
+    if(rg->initnode == NULL){
+        rg->RGinitialnode();
+    }
+
+    //生成交自动机的初始状态
+    addinitial_status(rg->initnode);
+
+    //从初始状态开始搜索
+    int i = 0;
+    int end = initial_status.size();
+    for(i;i<end;i++)
+    {
+        Product<rgnode> *init = new Product<rgnode>;
+        init->id= 0;
+        init->RGname_ptr = initial_status[i].RGname_ptr;
+        init->BAname_id = initial_status[i].BAname_id;
+        init->hashnext = NULL;
+//        dfs1(init);
+        simplified_dfs(init,0,-1);
+        delete init;
+        if(!result || !timeflag)  //如果已经出结果或超时，则退出
+            break;
+    }
+}
+
+template <class rgnode, class rg_T>
+void Product_Automata<rgnode,rg_T>::simplified_dfs(Product<rgnode> *q, int recurdepth, int CBANid) {
+
+    if(recurdepth>=flag)
+        return;
+    //outcurdepth<<recurdepth<<endl;
+    if(!result || !timeflag){
+        return ;
+    }
+
+    int cban;
+    if((ba->svertics[q->BAname_id].isAccept == true) && (q->id > CBANid))
+        cban = q->id;
+    else
+        cban = CBANid;
+
+    h.insert(q);
+    dfs_stack.insert(q);
+    SArcNode *pba = ba->svertics[q->BAname_id].firstarc;
+
+    //遍历BA的后继结点
+    while(pba != NULL) {
+
+        if(!result || !timeflag){
+            return ;
+        }
+
+        index_t *isFirable;
+        unsigned short firecount;
+        rg->getFireableTranx(q->RGname_ptr,&isFirable,firecount);
+
+        int rg_i = 0;
+        if(firecount == 0)
+        {
+            if(!result || !timeflag){
+                return ;
+            }
+
+            rgnode *rgseed = q->RGname_ptr;
+            if(isLabel(rgseed, pba->adjvex))
+            {
+                Product<rgnode> *qs = new Product<rgnode>;
+                qs->id = recurdepth + 1;
+                qs->BAname_id = pba->adjvex;
+                qs->RGname_ptr = rgseed;
+
+                Product<rgnode> *existpos = dfs_stack.search(qs);
+                if(existpos != NULL)
+                {
+                    if(existpos->id <= cban)
+                    {
+                        result = false;
+                        delete qs;
+                        return;
+                    }
+                }
+                if(h.search(qs) == NULL)
+                {
+                    simplified_dfs(qs,recurdepth+1,cban);
+                }
+                delete qs;
+            }
+        }
+        for(rg_i; rg_i<firecount; rg_i++)
+        {
+            if(!result || !timeflag){
                 return ;
             }
 

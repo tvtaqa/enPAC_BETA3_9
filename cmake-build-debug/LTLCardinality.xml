@@ -1,219 +1,169 @@
 <?xml version="1.0"?>
 <property-set xmlns="http://mcc.lip6.fr/">
   <property>
-    <id>RobotManipulation-PT-10000-LTLCardinality-00</id>
-    <description>Automatically generated</description>
-    <formula>
-      <all-paths>
-        <globally>
-          <next>
-            <finally>
-              <integer-le>
-                <integer-constant>3</integer-constant>
-                <tokens-count>
-                  <place>p_i1</place>
-                </tokens-count>
-              </integer-le>
-            </finally>
-          </next>
-        </globally>
-      </all-paths>
-    </formula>
-  </property>
-  <property>
-    <id>RobotManipulation-PT-10000-LTLCardinality-01</id>
+    <id>GPPP-PT-C1000N0000000100-LTLCardinality-00</id>
     <description>Automatically generated</description>
     <formula>
       <all-paths>
         <until>
           <before>
             <finally>
-              <next>
+              <finally>
                 <integer-le>
-                  <integer-constant>1</integer-constant>
                   <tokens-count>
-                    <place>move</place>
+                    <place>Pi</place>
+                  </tokens-count>
+                  <tokens-count>
+                    <place>b2</place>
                   </tokens-count>
                 </integer-le>
-              </next>
+              </finally>
             </finally>
           </before>
           <reach>
-            <globally>
-              <integer-le>
-                <tokens-count>
-                  <place>p_sc</place>
-                </tokens-count>
-                <tokens-count>
-                  <place>r_moving</place>
-                </tokens-count>
-              </integer-le>
-            </globally>
+            <integer-le>
+              <tokens-count>
+                <place>NADPplus</place>
+              </tokens-count>
+              <tokens-count>
+                <place>_1_3_BPG</place>
+              </tokens-count>
+            </integer-le>
           </reach>
         </until>
       </all-paths>
     </formula>
   </property>
   <property>
-    <id>RobotManipulation-PT-10000-LTLCardinality-02</id>
-    <description>Automatically generated</description>
-    <formula>
-      <all-paths>
-        <next>
-          <next>
-            <integer-le>
-              <tokens-count>
-                <place>off</place>
-              </tokens-count>
-              <tokens-count>
-                <place>p_m</place>
-              </tokens-count>
-            </integer-le>
-          </next>
-        </next>
-      </all-paths>
-    </formula>
-  </property>
-  <property>
-    <id>RobotManipulation-PT-10000-LTLCardinality-03</id>
-    <description>Automatically generated</description>
-    <formula>
-      <all-paths>
-        <finally>
-          <globally>
-            <next>
-              <integer-le>
-                <integer-constant>2</integer-constant>
-                <tokens-count>
-                  <place>r_stopped</place>
-                </tokens-count>
-              </integer-le>
-            </next>
-          </globally>
-        </finally>
-      </all-paths>
-    </formula>
-  </property>
-  <property>
-    <id>RobotManipulation-PT-10000-LTLCardinality-04</id>
-    <description>Automatically generated</description>
-    <formula>
-      <all-paths>
-        <finally>
-          <finally>
-            <integer-le>
-              <integer-constant>1</integer-constant>
-              <tokens-count>
-                <place>p_m</place>
-              </tokens-count>
-            </integer-le>
-          </finally>
-        </finally>
-      </all-paths>
-    </formula>
-  </property>
-  <property>
-    <id>RobotManipulation-PT-10000-LTLCardinality-05</id>
-    <description>Automatically generated</description>
-    <formula>
-      <all-paths>
-        <integer-le>
-          <tokens-count>
-            <place>moved</place>
-          </tokens-count>
-          <tokens-count>
-            <place>p_i2</place>
-          </tokens-count>
-        </integer-le>
-      </all-paths>
-    </formula>
-  </property>
-  <property>
-    <id>RobotManipulation-PT-10000-LTLCardinality-06</id>
-    <description>Automatically generated</description>
-    <formula>
-      <all-paths>
-        <next>
-          <next>
-            <globally>
-              <finally>
-                <integer-le>
-                  <tokens-count>
-                    <place>r_stopped</place>
-                  </tokens-count>
-                  <tokens-count>
-                    <place>p_m</place>
-                  </tokens-count>
-                </integer-le>
-              </finally>
-            </globally>
-          </next>
-        </next>
-      </all-paths>
-    </formula>
-  </property>
-  <property>
-    <id>RobotManipulation-PT-10000-LTLCardinality-07</id>
+    <id>GPPP-PT-C1000N0000000100-LTLCardinality-01</id>
     <description>Automatically generated</description>
     <formula>
       <all-paths>
         <globally>
           <finally>
-            <next>
-              <next>
+            <until>
+              <before>
+                <integer-le>
+                  <tokens-count>
+                    <place>ADP</place>
+                  </tokens-count>
+                  <tokens-count>
+                    <place>FBP</place>
+                  </tokens-count>
+                </integer-le>
+              </before>
+              <reach>
                 <integer-le>
                   <integer-constant>2</integer-constant>
                   <tokens-count>
-                    <place>p_i1</place>
+                    <place>PEP</place>
                   </tokens-count>
                 </integer-le>
-              </next>
-            </next>
+              </reach>
+            </until>
           </finally>
         </globally>
       </all-paths>
     </formula>
   </property>
   <property>
-    <id>RobotManipulation-PT-10000-LTLCardinality-08</id>
+    <id>GPPP-PT-C1000N0000000100-LTLCardinality-02</id>
     <description>Automatically generated</description>
     <formula>
       <all-paths>
         <integer-le>
           <integer-constant>1</integer-constant>
           <tokens-count>
-            <place>initialized</place>
+            <place>start</place>
           </tokens-count>
         </integer-le>
       </all-paths>
     </formula>
   </property>
   <property>
-    <id>RobotManipulation-PT-10000-LTLCardinality-09</id>
+    <id>GPPP-PT-C1000N0000000100-LTLCardinality-03</id>
     <description>Automatically generated</description>
     <formula>
       <all-paths>
         <next>
-          <finally>
-            <finally>
-              <globally>
+          <next>
+            <until>
+              <before>
                 <integer-le>
                   <tokens-count>
-                    <place>access</place>
+                    <place>ADP</place>
                   </tokens-count>
                   <tokens-count>
-                    <place>initialized</place>
+                    <place>Lac</place>
                   </tokens-count>
                 </integer-le>
-              </globally>
-            </finally>
-          </finally>
+              </before>
+              <reach>
+                <integer-le>
+                  <integer-constant>3</integer-constant>
+                  <tokens-count>
+                    <place>Ru5P</place>
+                  </tokens-count>
+                </integer-le>
+              </reach>
+            </until>
+          </next>
         </next>
       </all-paths>
     </formula>
   </property>
   <property>
-    <id>RobotManipulation-PT-10000-LTLCardinality-10</id>
+    <id>GPPP-PT-C1000N0000000100-LTLCardinality-04</id>
+    <description>Automatically generated</description>
+    <formula>
+      <all-paths>
+        <finally>
+          <until>
+            <before>
+              <next>
+                <integer-le>
+                  <integer-constant>2</integer-constant>
+                  <tokens-count>
+                    <place>GSSG</place>
+                  </tokens-count>
+                </integer-le>
+              </next>
+            </before>
+            <reach>
+              <next>
+                <integer-le>
+                  <integer-constant>3</integer-constant>
+                  <tokens-count>
+                    <place>GSSG</place>
+                  </tokens-count>
+                </integer-le>
+              </next>
+            </reach>
+          </until>
+        </finally>
+      </all-paths>
+    </formula>
+  </property>
+  <property>
+    <id>GPPP-PT-C1000N0000000100-LTLCardinality-05</id>
+    <description>Automatically generated</description>
+    <formula>
+      <all-paths>
+        <finally>
+          <integer-le>
+            <tokens-count>
+              <place>a1</place>
+            </tokens-count>
+            <tokens-count>
+              <place>start</place>
+            </tokens-count>
+          </integer-le>
+        </finally>
+      </all-paths>
+    </formula>
+  </property>
+  <property>
+    <id>GPPP-PT-C1000N0000000100-LTLCardinality-06</id>
     <description>Automatically generated</description>
     <formula>
       <all-paths>
@@ -223,10 +173,10 @@
               <before>
                 <integer-le>
                   <tokens-count>
-                    <place>access</place>
+                    <place>ADP</place>
                   </tokens-count>
                   <tokens-count>
-                    <place>r_moving</place>
+                    <place>GSH</place>
                   </tokens-count>
                 </integer-le>
               </before>
@@ -234,143 +184,227 @@
                 <integer-le>
                   <integer-constant>1</integer-constant>
                   <tokens-count>
-                    <place>p_rel</place>
+                    <place>c1</place>
                   </tokens-count>
                 </integer-le>
               </reach>
             </until>
           </before>
           <reach>
-            <integer-le>
-              <integer-constant>3</integer-constant>
-              <tokens-count>
-                <place>r_moving</place>
-              </tokens-count>
-            </integer-le>
+            <finally>
+              <finally>
+                <integer-le>
+                  <integer-constant>1</integer-constant>
+                  <tokens-count>
+                    <place>_1_3_BPG</place>
+                  </tokens-count>
+                </integer-le>
+              </finally>
+            </finally>
           </reach>
         </until>
       </all-paths>
     </formula>
   </property>
   <property>
-    <id>RobotManipulation-PT-10000-LTLCardinality-11</id>
+    <id>GPPP-PT-C1000N0000000100-LTLCardinality-07</id>
     <description>Automatically generated</description>
     <formula>
       <all-paths>
-        <integer-le>
-          <tokens-count>
-            <place>p_i1</place>
-          </tokens-count>
-          <tokens-count>
-            <place>move</place>
-          </tokens-count>
-        </integer-le>
+        <next>
+          <globally>
+            <finally>
+              <finally>
+                <integer-le>
+                  <tokens-count>
+                    <place>F6P</place>
+                  </tokens-count>
+                  <tokens-count>
+                    <place>NADPH</place>
+                  </tokens-count>
+                </integer-le>
+              </finally>
+            </finally>
+          </globally>
+        </next>
       </all-paths>
     </formula>
   </property>
   <property>
-    <id>RobotManipulation-PT-10000-LTLCardinality-12</id>
+    <id>GPPP-PT-C1000N0000000100-LTLCardinality-08</id>
     <description>Automatically generated</description>
     <formula>
       <all-paths>
         <globally>
-          <until>
-            <before>
-              <finally>
-                <integer-le>
-                  <integer-constant>2</integer-constant>
-                  <tokens-count>
-                    <place>initialize</place>
-                  </tokens-count>
-                </integer-le>
-              </finally>
-            </before>
-            <reach>
-              <globally>
-                <integer-le>
-                  <integer-constant>1</integer-constant>
-                  <tokens-count>
-                    <place>off</place>
-                  </tokens-count>
-                </integer-le>
-              </globally>
-            </reach>
-          </until>
+          <globally>
+            <finally>
+              <integer-le>
+                <integer-constant>1</integer-constant>
+                <tokens-count>
+                  <place>PEP</place>
+                </tokens-count>
+              </integer-le>
+            </finally>
+          </globally>
         </globally>
       </all-paths>
     </formula>
   </property>
   <property>
-    <id>RobotManipulation-PT-10000-LTLCardinality-13</id>
+    <id>GPPP-PT-C1000N0000000100-LTLCardinality-09</id>
+    <description>Automatically generated</description>
+    <formula>
+      <all-paths>
+        <next>
+          <finally>
+            <globally>
+              <next>
+                <integer-le>
+                  <integer-constant>2</integer-constant>
+                  <tokens-count>
+                    <place>ATP</place>
+                  </tokens-count>
+                </integer-le>
+              </next>
+            </globally>
+          </finally>
+        </next>
+      </all-paths>
+    </formula>
+  </property>
+  <property>
+    <id>GPPP-PT-C1000N0000000100-LTLCardinality-10</id>
+    <description>Automatically generated</description>
+    <formula>
+      <all-paths>
+        <finally>
+          <finally>
+            <next>
+              <integer-le>
+                <tokens-count>
+                  <place>_1_3_BPG</place>
+                </tokens-count>
+                <tokens-count>
+                  <place>NADH</place>
+                </tokens-count>
+              </integer-le>
+            </next>
+          </finally>
+        </finally>
+      </all-paths>
+    </formula>
+  </property>
+  <property>
+    <id>GPPP-PT-C1000N0000000100-LTLCardinality-11</id>
+    <description>Automatically generated</description>
+    <formula>
+      <all-paths>
+        <next>
+          <globally>
+            <globally>
+              <integer-le>
+                <integer-constant>1</integer-constant>
+                <tokens-count>
+                  <place>GAP</place>
+                </tokens-count>
+              </integer-le>
+            </globally>
+          </globally>
+        </next>
+      </all-paths>
+    </formula>
+  </property>
+  <property>
+    <id>GPPP-PT-C1000N0000000100-LTLCardinality-12</id>
+    <description>Automatically generated</description>
+    <formula>
+      <all-paths>
+        <next>
+          <integer-le>
+            <tokens-count>
+              <place>Xu5P</place>
+            </tokens-count>
+            <tokens-count>
+              <place>a1</place>
+            </tokens-count>
+          </integer-le>
+        </next>
+      </all-paths>
+    </formula>
+  </property>
+  <property>
+    <id>GPPP-PT-C1000N0000000100-LTLCardinality-13</id>
     <description>Automatically generated</description>
     <formula>
       <all-paths>
         <next>
           <next>
-            <next>
-              <integer-le>
-                <tokens-count>
-                  <place>r_moving</place>
-                </tokens-count>
-                <tokens-count>
-                  <place>r_stopped</place>
-                </tokens-count>
-              </integer-le>
-            </next>
+            <finally>
+              <finally>
+                <integer-le>
+                  <integer-constant>1</integer-constant>
+                  <tokens-count>
+                    <place>_3PG</place>
+                  </tokens-count>
+                </integer-le>
+              </finally>
+            </finally>
           </next>
         </next>
       </all-paths>
     </formula>
   </property>
   <property>
-    <id>RobotManipulation-PT-10000-LTLCardinality-14</id>
+    <id>GPPP-PT-C1000N0000000100-LTLCardinality-14</id>
     <description>Automatically generated</description>
     <formula>
       <all-paths>
-        <finally>
-          <integer-le>
-            <tokens-count>
-              <place>r_stopped</place>
-            </tokens-count>
-            <tokens-count>
-              <place>initialized</place>
-            </tokens-count>
-          </integer-le>
-        </finally>
+        <until>
+          <before>
+            <integer-le>
+              <tokens-count>
+                <place>R5P</place>
+              </tokens-count>
+              <tokens-count>
+                <place>c2</place>
+              </tokens-count>
+            </integer-le>
+          </before>
+          <reach>
+            <next>
+              <next>
+                <integer-le>
+                  <integer-constant>1</integer-constant>
+                  <tokens-count>
+                    <place>b1</place>
+                  </tokens-count>
+                </integer-le>
+              </next>
+            </next>
+          </reach>
+        </until>
       </all-paths>
     </formula>
   </property>
   <property>
-    <id>RobotManipulation-PT-10000-LTLCardinality-15</id>
+    <id>GPPP-PT-C1000N0000000100-LTLCardinality-15</id>
     <description>Automatically generated</description>
     <formula>
       <all-paths>
-        <finally>
-          <until>
-            <before>
-              <next>
+        <next>
+          <next>
+            <globally>
+              <globally>
                 <integer-le>
-                  <integer-constant>2</integer-constant>
+                  <integer-constant>1</integer-constant>
                   <tokens-count>
-                    <place>p_rel</place>
+                    <place>ATP</place>
                   </tokens-count>
                 </integer-le>
-              </next>
-            </before>
-            <reach>
-              <finally>
-                <integer-le>
-                  <tokens-count>
-                    <place>r_active</place>
-                  </tokens-count>
-                  <tokens-count>
-                    <place>r_moving</place>
-                  </tokens-count>
-                </integer-le>
-              </finally>
-            </reach>
-          </until>
-        </finally>
+              </globally>
+            </globally>
+          </next>
+        </next>
       </all-paths>
     </formula>
   </property>
